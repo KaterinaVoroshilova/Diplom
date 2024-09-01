@@ -14,6 +14,7 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.steps.AboutStep;
 import ru.iteco.fmhandroid.ui.steps.AuthStep;
 import ru.iteco.fmhandroid.ui.steps.LoveStep;
 import ru.iteco.fmhandroid.ui.steps.MainSteps;
@@ -28,6 +29,7 @@ public class MainPaigeTest {
     NewsStep newsStep = new NewsStep();
     LoveStep loveStep = new LoveStep();
     SplashStep splashStep = new SplashStep();
+    AboutStep aboutStep = new AboutStep();
 
 
     @Rule
@@ -52,6 +54,15 @@ public class MainPaigeTest {
     public void menuElementsVisibility(){
         mainSteps.clickMenuButton();
         mainSteps.checkMenuList();
+    }
+
+    @Test
+    @DisplayName("Переход по меню")
+    public void menuNewsToAbout() {
+        mainSteps.clickOnNews();
+        newsStep.checkNewsElements();
+        mainSteps.clickOnAboutUs();
+        aboutStep.checkScreenElementsAboutUs();
     }
 
     @Test
